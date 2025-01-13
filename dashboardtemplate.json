@@ -1,0 +1,54 @@
+{"widgets": [
+      {
+        "type": "metric",
+        "width": 12,
+        "height": 6,
+        "properties": {
+          "view": "bar",
+          "title": "Number of Anomalies per Site",
+          "region": "${aws_region}",
+          "metrics": [
+            ["EnergyMetrics", "Anomalies", "SiteID", "0"]
+          ]
+        }
+      },
+      {
+        "type" : "metric",
+        "width" : 12,
+        "height" : 6,
+        "properties":{
+          "title" : "Energy Generated",
+          "region" : "${aws_region}",
+          "stacked" : false,
+          "period" : 3600,
+          "metrics" :[
+            ["EnergyMetrics", "EnergyGenerated", "SiteID", "0"]
+          ]
+        }
+      },
+	  {
+        "type" : "metric",
+        "width" : 12,
+        "height" : 6,
+        "properties":{
+          "title" : "Energy Consumed",
+          "region" : "${aws_region}",
+          "stacked" : false,
+          "period" : 3600,
+          "metrics" :[
+            ["EnergyMetrics", "EnergyConsumed", "SiteID", "0"]
+          ]
+        }
+      }
+    ],
+  "variables": [{
+        "type": "property",
+        "property": "SiteID",
+        "inputType": "select",
+        "id": "LambdaFunction_Variable",
+        "label": "Site ID",
+        "visible": true,
+        "search": "{EnergyMetrics, SiteID}",
+        "populateFrom": "SiteID"
+    }]
+}
